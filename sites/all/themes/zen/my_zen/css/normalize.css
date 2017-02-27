@@ -1,0 +1,2739 @@
+/**
+ * @file
+ * Normalize.css is intended to be used as an alternative to CSS resets.
+ *
+ * This file is a slight fork of these original sources:
+ * - normalize.css v2.1.2 | MIT License | git.io/normalize
+ * - normalize.scss v2.1.2 | MIT/GPLv2 License | bit.ly/normalize-scss
+ *
+ * It's suggested that you read the normalize.scss file and customise it to meet
+ * your needs, rather then including the file in your project and overriding the
+ * defaults later in your CSS.
+ * @see http://nicolasgallagher.com/about-normalize-css/
+ *
+ * Also: @see http://meiert.com/en/blog/20080419/reset-style-sheets-are-bad/
+ *       @see http://snook.ca/archives/html_and_css/no_css_reset/
+ */
+
+/**
+ * HTML5 display definitions
+ */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /*font-size: 0;*/
+  outline: 0;
+}
+/* Correct `block` display not defined in IE 8/9. */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* Correct `inline-block` display not defined in IE 8/9. */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* Address styling not present in IE 8/9. */
+[hidden] {
+  display: none;
+}
+
+/**
+ * Base
+ *
+ * Instead of relying on the fonts that are available on a user's computer, you
+ * can use web fonts which, like images, are resources downloaded to the user's
+ * browser. Because of the bandwidth and rendering resources required, web fonts
+ * should be used with care.
+ *
+ * Numerous resources for web fonts can be found on Google. Here are a few
+ * websites where you can find Open Source fonts to download:
+ * - http://www.fontsquirrel.com/fontface
+ * - http://www.theleagueofmoveabletype.com
+ *
+ * In order to use these fonts, you will need to convert them into formats
+ * suitable for web fonts. We recommend the free-to-use Font Squirrel's
+ * Font-Face Generator:
+ *   http://www.fontsquirrel.com/fontface/generator
+ *
+ * The following is an example @font-face declaration. This font can then be
+ * used in any ruleset using a property like this:  font-family: Example, serif;
+ */
+
+/*
+@font-face {
+  font-family: 'Example';
+  src: url('../fonts/example.eot');
+  src: url('../fonts/example.eot?iefix') format('eot'),
+    url('../fonts/example.woff') format('woff'),
+    url('../fonts/example.ttf') format('truetype'),
+    url('../fonts/example.svg#webfontOkOndcij') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ */
+html {
+  font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif; /* 1 */
+
+  /* Delete all but one of the following font-size declarations: */
+
+  /* Use a 12px base font size. 16px x 75% = 12px */
+  font-size: 75%; /* 3 */
+  /* Use a 14px base font size. 16px x .875 = 14px */
+  font-size: 87.5%; /* 3 */
+  /* Use a 16px base font size. */
+  font-size: 100%; /* 3 */
+
+  -ms-text-size-adjust: 100%;     /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+
+  /* Establish a vertical rhythm. */
+  line-height: 1.5em;
+}
+
+/* Address `font-family` inconsistency between `textarea` and other form elements. */
+button,
+input,
+select,
+textarea {
+  /**
+   * The following font family declarations are available on most computers.
+   *
+   * A user's web browser will look at the comma-separated list and will
+   * attempt to use each font in turn until it finds one that is available
+   * on the user's computer. The final "generic" font (sans-serif, serif or
+   * monospace) hints at what type of font to use if the web browser doesn't
+   * find any of the fonts in the list.
+   *
+   * font-family: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+   * font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+   * font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+   *
+   * font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
+   * font-family: Tahoma, Verdana, "DejaVu Sans", sans-serif;
+   * font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;
+   * font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+   *
+   * font-family: "Courier New", "DejaVu Sans Mono", monospace;
+   */
+  font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
+}
+
+/* Remove default margin. */
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 296px;
+}
+
+/**
+ * Links
+ *
+ * The order of link states are based on Eric Meyer's article:
+ * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
+ */
+a:link {
+}
+a:visited {
+}
+a:hover,
+a:focus {
+}
+a:active {
+}
+
+/* Address `outline` inconsistency between Chrome and other browsers. */
+a:focus {
+  outline: thin dotted;
+}
+
+/* Improve readability when focused and also mouse hovered in all browsers. */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/**
+ * Typography
+ *
+ * To achieve a pleasant vertical rhythm, we use Compass' Vertical Rhythm mixins
+ * so that the line height of our base font becomes the basic unit of vertical
+ * measurement. We use multiples of that unit to set the top and bottom margins
+ * for our block level elements and to set the line heights of any fonts.
+ * For more information, see http://24ways.org/2006/compose-to-a-vertical-rhythm
+ */
+
+/* Set 1 unit of vertical rhythm on the top and bottom margin. */
+p,
+pre {
+  margin: 1.5em 0;
+}
+blockquote {
+  /* Also indent the quote on both sides. */
+  margin: 1.5em 30px;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  /* Set the font-size and line-height while keeping a proper vertical rhythm. */
+  font-size: 2em;
+  line-height: 1.5em; /* 3rem / 2em = 1.5em */
+  /* Set 1 unit of vertical rhythm on the top and bottom margins. */
+  margin-top: 0.75em; /* 1.5rem / 2em = .75em */
+  margin-bottom: 0.75em;
+}
+h2 {
+  font-size: 1.5em;
+  line-height: 2em; /* 3rem / 1.5em = 2em */
+  margin-top: 1em; /* 1.5rem / 1.5em = 1em */
+  margin-bottom: 1em;
+}
+h3 {
+  font-size: 1.17em;
+  line-height: 1.28205em; /* 1.5rem / 1.17em = 1.28205em */
+  margin-top: 1.28205em;
+  margin-bottom: 1.28205em;
+}
+h4 {
+  font-size: 1em;
+  line-height: 1.5em; /* 1.5rem / 1em = 1.5em */
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+h5 {
+  font-size: 0.83em;
+  line-height: 1.80723em; /* 1.5rem / 0.83em = 1.80723em */
+  margin-top: 1.80723em;
+  margin-bottom: 1.80723em;
+}
+h6 {
+  font-size: 0.67em;
+  line-height: 2.23881em; /* 1.5rem / 0.67em = 2.23881em */
+  margin-top: 2.23881em;
+  margin-bottom: 2.23881em;
+}
+
+/* Address styling not present in IE 8/9, Safari 5, and Chrome. */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* Address styling not present in Safari 5 and Chrome. */
+dfn {
+  font-style: italic;
+}
+
+/* Address differences between Firefox and other browsers. */
+hr {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+  border: 1px solid #666;
+  padding-bottom: -1px;
+  margin: 1.5em 0;
+}
+
+/* Address styling not present in IE 8/9. */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/* Correct font family set oddly in Safari 5 and Chrome. */
+code,
+kbd,
+pre,
+samp,
+tt,
+var {
+  font-family: "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* Improve readability of pre-formatted text in all browsers. */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Set consistent quote types. */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/* Address inconsistent and variable font size in all browsers. */
+small {
+  font-size: 80%;
+}
+
+/* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+/**
+ * Lists
+ */
+dl,
+menu,
+ol,
+ul {
+  /* Address margins set differently in IE 6/7. */
+  margin: 1.5em 0;
+}
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  /* Turn off margins on nested lists. */
+  margin: 0;
+}
+dd {
+  margin: 0 0 0 30px; /* LTR */
+}
+
+/* Address paddings set differently in IE 6/7. */
+menu,
+ol,
+ul {
+  padding: 0 0 0 30px; /* LTR */
+}
+
+/* Correct list images handled incorrectly in IE 7. */
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+
+/**
+ * Embedded content and figures
+ *
+ * @todo Look into adding responsive embedded video.
+ */
+img {
+  /* Remove border when inside `a` element in IE 8/9. */
+  border: 0;
+  /* Improve image quality when scaled in IE 7. */
+  -ms-interpolation-mode: bicubic;
+
+  /* Suppress the space beneath the baseline */
+  /* vertical-align: bottom; */
+
+  /* Responsive images */
+  max-width: 100%;
+  height: auto;
+  /* Correct IE 8 not scaling image height when resized. */
+  width: auto;
+}
+
+/* Correct overflow displayed oddly in IE 9. */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Address margin not present in IE 8/9 and Safari 5. */
+figure {
+  margin: 0;
+}
+
+/**
+ * Forms
+ */
+
+/* Correct margin displayed oddly in IE 6/7. */
+form {
+  margin: 0;
+}
+
+/* Define consistent border, margin, and padding. */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.5em 0.625em 1em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+  *margin-left: -7px; /* 3 */ /* LTR */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * 4. Improve appearance and consistency with IE 6/7.
+ * 5. Keep form elements constrained in their containers.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 2 */
+  margin: 0; /* 3 */
+  vertical-align: baseline; /* 4 */
+  *vertical-align: middle; /* 4 */
+  max-width: 100%; /* 5 */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; /* 5 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+  *overflow: visible; /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+  *height: 13px; /* 3 */
+  *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Remove inner padding and border in Firefox 4+. */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto; /* 1 */
+  vertical-align: top; /* 2 */
+}
+
+/* Drupal-style form labels. */
+label {
+  display: block;
+  font-weight: bold;
+}
+
+/**
+ * Tables
+ */
+table {
+  /* Remove most spacing between table cells. */
+  border-collapse: collapse;
+  border-spacing: 0;
+  /* Prevent cramped-looking tables */
+  /* width: 100%; */
+  /* Add vertical rhythm margins. */
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+
+/**/
+
+/*header*/
+#header,
+#footer {
+  width: 100%;
+  margin: 0px auto;
+  background: #2d333c;
+  position: relative;
+}
+
+#main {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.sidebar-second #content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sidebar-second .region-sidebar-second {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/*блок з логотипом і датою зліва в header*/
+
+.navbar-header{
+ /* margin-left: 15%;*/
+  margin-left: calc(15% - 50px);
+  /*margin-top: 20px;*/
+  /*position: absolute;
+  left: 60px;
+  top: 20px;*/
+}
+.navbar-header .logo,
+.navbar-header .region-date-time/*,
+.navbar-header .navbar-toggle*/ {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*.navbar-header .logo {
+  margin-left: 120px;
+}*/
+
+.navbar-header .logo img {
+  width: 150px;
+  height: 150px;
+}
+
+
+.navbar-header .region-date-time {
+  width: 105px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+}
+
+.content {
+  font-size: 12px;
+}
+
+/*кнопка розкриття меню*/
+
+.navbar-toggle,
+ .navbar-toggle1 {
+  width: 44px;
+  height: 34px;
+  display: none;
+  /*visibility: hidden;*/
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  /*cursor: pointer;*/
+}
+
+.navbar-toggle .icon-bar,
+.navbar-toggle1 .icon-bar {
+  display: block;
+  margin-bottom: 4px;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: white;
+}
+/*меню навігації справа в header*/
+#block-system-navigation {
+  margin-bottom: 0px;
+}
+
+.block-menu .nav_menu {
+  margin: 0px;
+  padding: 0px;
+}
+
+.block-menu .nav_menu .menu__item.is-leaf {
+  display: inline-block;
+  vertical-align: top;
+ /* background-color: yellow;*/
+  list-style-image: none;
+  list-style-type: none;
+  vertical-align: top;
+}
+
+.block-menu .nav_menu .menu__item.is-leaf a {
+  display: block;
+  color: #fff;
+  font-size: 13px;
+  background: none;
+  /*font-family: 'pt_sansregular';*/
+  padding: 19px 8px 10px 8px;
+  text-decoration: none;
+}
+
+.block-menu .nav_menu .menu__item.is-active-trail a {
+  box-shadow: inset 0 3px 9px rgba(0,0,0,.25);
+}
+.block-menu .nav_menu .menu__item.is-leaf a:hover {
+  color: #ffaa13;
+  text-decoration: underline;
+}
+
+.block-menu .nav_menu .menu__item.is-leaf a:active {
+  border: 1px solid black;
+  box-shadow: inset 0 3px 9px rgba(0,0,0,.25);
+}
+
+.block-menu .nav_menu .my-uniq-class-731 a {
+  background:url(../images/plus.png) no-repeat right 22px !important;
+  padding-right: 20px !important;
+  margin-right: 0px !important;
+}
+
+.block-menu .nav_menu .my-uniq-class-814 a {
+  background:url(../images/rss.png) no-repeat right 22px !important;
+  padding-right: 20px !important;
+  margin-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.navbar-header-navigation {
+  position: absolute;
+  right: 7%;
+  top: 0px;
+  /*box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  border-top: 1px solid #101010;*/
+}
+
+/*login-menu в header*/
+.header__region {
+  position: absolute;
+  right: 7%;
+  /*top: 50px;*/
+  top: 30%;
+}
+
+.header__region #block-menu-menu-login-menu {
+  margin-bottom: 0px;
+}
+
+.header__region #block-ulogin-ulogin,
+.header__region #block-menu-menu-login-menu {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.header__region #block-menu-menu-login-menu {
+  float: right;
+}
+
+.header__region #block-menu-menu-login-menu ul li {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.header__region ul li a {
+  background: #424a56;
+  padding: 5px 15px;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+}
+
+/*.header__region .form-type-ulogin-widget {
+  float: right;
+}*/
+
+.header__region #block-ulogin-ulogin {
+  float: right;
+}
+
+/*uLogin*/
+.header__region #block-ulogin-ulogin img {
+  width: 27px;
+  height: 27px;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+
+/*user menu (myacount/logout)*/
+#block-system-user-menu {
+  border: 1px solid grey;
+  margin-bottom: 0px;
+}
+#block-system-user-menu ul li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*ПОВІДОМИТИ НОВИНУ*/
+#edit-submitted-tekst-novini {
+  width: 564px;
+}
+
+
+/*page node=article, галерея*/
+.view-galery .views-view-grid tr td {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+/*page node=article, similar_content-block*/
+#block-views-similar-content-block .views-row-odd,
+#block-views-similar-content-block .views-row-even {
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#block-views-similar-content-block .block-title {
+  font-size: 24px;
+  color: #2a2e36;
+  font-family: 'scada';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-similar-content-block .views-row {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 27px;
+  padding-right: 30px;
+}
+
+#block-views-similar-content-block .views-row .views-field-title a {
+  color: #404855;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#block-views-similar-content-block .views-row .views-field-created {
+  color: #959595;
+  font-size: 14px;
+}
+
+/*page node=article, comments*/
+
+.comment-by-node-author {
+  margin-top: 20px;
+}
+
+#comments .comments__title {
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #404855;
+  font-family: 'scada';
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+
+.comment-form label {
+  font-size: 18px;
+  font-family: 'scada';
+  font-weight: normal;
+}
+
+.comment-form .form-text {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.comment-form .form-textarea {
+  display: block;
+  margin: 0;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.comment-form .form-actions #edit-submit {
+  font-size: 17px;
+  color: #fff;
+  font-family: 'PT Sans';
+  text-transform: uppercase;
+  background: #5a6472;
+  border: none;
+  border-bottom: 2px solid #7f8b9a;
+  padding: 6px 15px 6px 15px;
+  margin-top: 10px;
+}
+
+.comment-form .form-actions #edit-submit:hover {
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+.comment-form .form-item-captcha-response .form-text {
+  max-width: 250px;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+#comments .comment {
+  margin-top: 20px;
+}
+
+.node-article .node-links {
+  background-color: #f4f4f4;
+  padding: 5px 7px;
+}
+
+.node-article .node-links a {
+  color: #428bca;
+  text-decoration: none;
+}
+/*коментарі*/
+
+.comment img {
+  display: block;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+
+.leftComment, .rightComment {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+
+.rightComment .field-name-comment-body p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+#comments .links a {
+  font-size: 12px;
+  color: #a0a8b5;
+  text-transform: uppercase;
+}
+
+#comments .comment-reply a {
+  background: none no-repeat left center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzIyRjM5MjdFNzdGMTFFM0FENUU4ODBGOEZDMzMxNjQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzIyRjM5MjhFNzdGMTFFM0FENUU4ODBGOEZDMzMxNjQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDMjJGMzkyNUU3N0YxMUUzQUQ1RTg4MEY4RkMzMzE2NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDMjJGMzkyNkU3N0YxMUUzQUQ1RTg4MEY4RkMzMzE2NCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsXXH6oAAAB7SURBVHjaYjxw/PKHP3//8jMQACzMzB+Z/v3/z8ZABPj//z8rEzMT43diFDMxMf5gYiAB0FAx0IOsxHmQgZmJg53tETGKmZmZPjMCgwQusPfoRTCHlZXljZ2ZtihBN/Pzcp0w0lF2xBXYcHzz7pNJf//+5UQWQ8YAAQYAawFBDXj7Lr8AAAAASUVORK5CYII=);
+  padding-left: 15px;
+}
+
+
+/*navigation*/
+#navigation {
+  width: 100%;
+  margin: 0px auto;
+  /*height: 52px;*/
+  background-color: #39414d;
+  margin-bottom: 10px;
+}
+
+#navigation ul {
+  margin-left: calc(14% - 50px);
+  float: left;
+}
+
+#navigation:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+#navigation ul li a {
+  color: #fff;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px 19px 8px 19px;
+  display: block;
+}
+
+#navigation ul li {
+  position: relative;
+}
+#navigation ul li a {
+  border-right: 1px solid #485467;
+  height: 32px;
+}
+
+#navigation ul li ul {
+  margin-left: 0px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  /*display: none;*/
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 0px 0 0;
+  font-size: 14px;
+  list-style: none;
+  /*border: 1px solid rgba(0,0,0,.15);*/
+  border-radius: 4px;
+ /* box-shadow: 0 6px 12px rgba(0,0,0,.175);*/
+}
+
+#navigation ul li ul li a {
+  font-size: 13px;
+  background-color: #ffaa13;
+  border-right: none;
+  border-bottom: 1px solid #485467;
+  display: none;
+  min-width: 160px;
+  height: auto !important;
+  padding: 2px 5px;
+}
+
+.region-navigation {
+  font-size: 0;
+}
+.caret {  /*символ на зовнішньому лінку головного меню*/
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+/*випадаюче меню (main menu)*/
+
+#block-system-main-menu ul,
+#block-system-main-menu ul li ul {
+  padding: 0px;
+  /*z-index: 100;*/
+}
+
+#block-system-main-menu ul li ul {
+  display: none;
+}
+
+#block-system-main-menu ul li {
+  display: inline-block;
+  vertical-align: top;
+  list-style: none;
+  list-style-image: none;
+}
+
+/*#block-system-main-menu ul li ul {
+   width: 100%;
+}*/
+#block-system-main-menu ul li ul li {
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#block-system-main-menu ul li:hover li a,
+#block-system-main-menu ul li:hover ul {
+  /*visibility: visible;*/
+  display: block;
+}
+
+#block-system-main-menu ul li ul li a:hover {
+  text-decoration: underline;
+}
+
+/*user menu (myacount/logout)*/
+#block-system-user-menu ul li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/**/
+#content #ulogin img {
+  width: 75px;
+  height: 75px;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+/*Сторінка входу page-user*/
+.content-wrapper {
+  width: 80%;
+  margin: 2px auto;
+}
+
+.content-wrapper::after {
+  content: ' ';
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+.content-wrapper .messages--error {
+  width: 80%;
+  margin: 24px auto;
+  /*background-image: none;*/
+  font-size: 14px;
+  border-color: #dca7a7;
+  background-image: linear-gradient(to bottom,#f2dede 0%,#e7c3c3 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2dede',endColorstr='#ffe7c3c3',GradientType=0);
+  background-repeat: repeat-x;
+}
+
+#user-login .form-title {
+  color: #404855;
+  font-family: 'PT Sans';
+  font-size: 24px;
+}
+
+#content .page__title {
+  font-size: 26px;
+  color: #2a2e36;
+  font-family: 'PT Sans';
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  /*border-bottom: 2px solid #a0a8b5;*/
+  text-transform: uppercase;
+}
+
+#user-login label,
+#user-register-form label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#user-login .form-text,
+#user-register-form .form-text {
+  background-color: #fff;
+  background-image: none;
+  color: rgb(0, 0, 0);
+  display: block;
+  border: 1px solid #a0a8b5;
+  max-width: 330px;
+  width: 330px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+#user-login .form-submit,
+#user-register-form .form-submit {
+  background-color: #fda50d;
+  border-bottom-color: #e49000;
+  width: 314px;
+  font-size: 17px;
+  color: #fff;
+  text-shadow: 0 1px 0 #fff;
+  text-decoration: none;
+  font-size: 17px;
+  height: 37px;
+  text-transform: uppercase;
+  border-color: #adadad;
+}
+
+#user-login .form-submit:hover,
+#user-register-form .form-submit:hover {
+  color: #333;
+}
+
+#user-register-form .password-confirm {
+  float: none;
+  visibility: visible;
+}
+
+#user-register-form .password-strength {
+  float: none;
+}
+
+#user-register-form .password-indicator {
+  display: none;
+}
+
+#user-register-form .form-submit {
+  width: 270px;
+}
+
+
+#user-login #edit-captcha-response,
+#user-register-form #edit-captcha-response {
+  background-color: white;
+  height: 20px;
+}
+
+#user-register-form img {
+  width: 75px;
+  margin-right: 10px;
+}
+
+.tabs-primary .tabs-primary__tab {
+  border: 0px;
+}
+
+.tabs-primary a.tabs-primary__tab-link {
+  display: block;
+  color: #428bca;
+  text-decoration: none;
+  background: transparent;
+  position: relative;
+  padding: 10px 15px;
+  border: 0px;
+  font-size: 12px;
+}
+
+.tabs-primary a.tabs-primary__tab-link: hover {
+ border-color: #eee #eee #ddd;
+ background-color: #eee;
+}
+
+.tabs-primary a.tabs-primary__tab-link.is-active {
+  color: #555;
+  cursor: default;
+  background: transparent;
+  /*background-color: #fff;*/
+  border: 1px solid #ddd;
+  border-color: #eee #eee #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 0px;
+}
+
+/*tooltips*/
+#hintbox{ /*CSS for pop up hint box */
+position:absolute;
+top: 0;
+background-color: black;
+color: white;
+font-family: 'PT Sans';
+border-radius: 5px;
+width: 150px; /*Default width of hint.*/ 
+padding: 3px;
+border:1px solid black;
+font:normal 11px Verdana;
+line-height:18px;
+z-index:100;
+border-right: 3px solid black;
+border-bottom: 3px solid black;
+visibility: hidden;
+}
+
+/*Зображення в полях матеріалу*/
+.field-item img {
+  height: auto !important;
+}
+
+
+/*view all news*/
+/*.view-all-news-front .view-content {
+  max-height: 1132px;
+  ///width: 300px; 
+  ///margin: 30px auto; 
+  ///height: 200px; 
+}*/
+
+/*.region-content {
+  width: 360px;
+}*/
+//////*код для блока зі скролінгом без плагіна*/
+/*#block-views-all-news-front-block .view-content {
+  max-height: 600px;
+  width: 360px;
+  overflow: auto;
+}*/
+       /*пейджер*/
+.view-all-news-front .item-list {
+  text-align: center;
+}
+
+.view-all-news-front {
+  font-size: 16px;
+  font-family: 'scada';
+}
+
+.view-all-news-front h3 {
+  font-size: 20px;
+  color: #373c47;
+}
+
+#block-views-all-news-front-block .block-title {
+  font-size: 24px;
+  font-family: 'PT Sans';
+}
+
+#block-views-all-news-front-block .more-link,
+#block-views-all-news-front-block-1 .more-link {
+  text-align: left;
+}
+
+.view-all-news-front .views-row {
+  padding-bottom: 5px;
+  margin-bottom: 23px;
+  border-bottom: 1px solid #f4f4f4;
+  margin-right: 13px;
+}
+.view-all-news-front .views-field-created {
+  color: #969696;
+  font-size: 16px;
+}
+
+.view-all-news-front .views-field-title a {
+    color: #404855;
+    text-decoration: none;
+}
+
+#block-views-all-news-front-block .more-link a,
+#block-views-all-news-front-block-1 .more-link a {
+  text-decoration: none;
+  color: #428bca;
+  font-size: 16px;
+  font-family: 'scada';
+} 
+
+#block-views-all-news-front-block .more-link a:hover,
+#block-views-all-news-front-block-1 .more-link a:hover {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+/*page node=article, polosa*/
+.polosa {
+  margin-bottom: 30px;
+}
+.polosa .news_time {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  color: #969696;
+}
+
+.polosa .yashare {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 63%;
+}
+
+
+
+
+
+
+/*slideshow*/
+.region-sidebar-first .view-slideshow,
+.region-sidebar-second .view-slideshow-right {
+  position: relative;
+}
+
+.region-sidebar-first .view-slideshow .views-field-title {
+  position: absolute;
+  /*top: 200px;*/
+  bottom: 0px;
+  left: 0px;
+  z-index: 50;
+  background-color: rgba(0,0,0,0.6);
+  width: 90%;
+  height: 100px;
+  padding: 14px 10px 21px 10px;
+}
+
+#views_slideshow_cycle_teaser_section_slideshow-block .views-slideshow-cycle-main-frame-row img {
+  width: 100% !important;
+  /*overflow: hidden;*/
+}
+
+.region-sidebar-first .view-slideshow .views-field-title a {
+  color: #fff;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.region-sidebar-first .views-slideshow-pager-fields {
+  position: absolute;
+  /*top: 300px;*/
+  bottom: -10px;
+  left: 0px;
+  z-index: 50;
+  background: #2d323b;
+  width: 100%;
+  max-width: 360px;
+  padding: 3% 0 3% 0;
+}
+
+#views_slideshow_pager_field_item_bottom_slideshow-block_0,
+#views_slideshow_pager_field_item_top_slideshow_right-block_0 {
+  margin-left: 3%;
+}
+
+.views-slideshow-pager-field-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 7px;
+  width: 14px;
+  height: 13px;
+  background: url(../images/indicator.png) no-repeat left -13px;
+}
+
+.views-slideshow-pager-field-item.active {
+  background: url(../images/indicator.png) no-repeat left  0px;
+}
+
+.region-sidebar-second #block-views-slideshow-right-block .block-title {
+  font-size: 26px;
+  line-height: 1.4em;
+  color: #2a2e36;
+  font-family: 'scada';
+  padding: 0 0 5px 0;
+  margin: 0 0 35px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+.region-sidebar-second .views-slideshow-pager-fields {
+  position: absolute;
+  top: -27px;
+  left: 0px;
+  z-index: 50;
+  background: #2d323b;
+  width: 100%;
+  max-width: 360px;
+  padding: 3% 0 1% 0;
+}
+
+.region-sidebar-second .views-field-title {
+  padding: 9px 5px;
+  margin-top: 3px;
+}
+
+.region-sidebar-second .views-field-title a {
+  font-size: 15px;
+  color: #373c47;
+  text-decoration: none;
+  font-family: 'scada';
+  font-weight: bolder;
+}
+
+.region-sidebar-second .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+/*views front_blocks*/
+#block-views-front-blocks-block .block-title,
+#block-views-front-blocks-block-1 .block-title,
+#block-views-front-blocks-block-2 .block-title,
+#block-views-vibir-redaktora-block-1 .block-title,
+#block-views-front-blocks-block-3 .block-title {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-family: 'scada';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+}
+
+#block-views-front-blocks-block .block-title-link,
+#block-views-front-blocks-block-1 .block-title-link,
+#block-views-front-blocks-block-2 .block-title-link {
+  color: #2a2e36;
+  text-decoration: none;
+  font-weight: bold;
+} 
+
+#block-views-front-blocks-block .block-title-link:hover,
+#block-views-front-blocks-block-1 .block-title-linke:hover,
+#block-views-front-blocks-block-2 .block-title-link:hover {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+.view-front-blocks .views-field-title h3,
+#block-views-vibir-redaktora-block-1 h3 {
+  margin: 13px 0 20px 0;
+}
+
+.view-front-blocks .views-field-title h3 a,
+#block-views-vibir-redaktora-block-1 .views-field-title h3 a {
+  color: #373c47;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'scada';
+}
+
+.view-front-blocks .views-field-title h3 a:hover,
+#block-views-vibir-redaktora-block-1 .views-field-title h3 a:hover {
+  text-decoration: underline;
+}
+
+.view-front-blocks .attachment .views-field-title a,
+#block-views-vibir-redaktora-block-1 .attachment-after .views-field-title a,
+#block-views-front-blocks-block-3 .views-field-title a {
+  font-size: 16px;
+  color: #404855;
+  text-decoration: none;
+  font-family: 'scada';
+}
+
+.view-front-blocks .attachment .views-field-title a:hover,
+#block-views-vibir-redaktora-block-1 .attachment-after .views-field-title a:hover,
+#block-views-front-blocks-block-3 .views-row a:hover {
+  text-decoration: underline;
+}
+
+#block-views-front-blocks-block-3 .views-field-created {
+  color: #959595;
+  font-size: 14px;
+}
+
+.view-front-blocks .attachment .views-row,
+#block-views-vibir-redaktora-block-1 .attachment .views-row {
+  background: none no-repeat left 6px;
+  /*background-image: url(../images/punct.png);*/
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAIAAABv85FHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJGQzlEODY4RUY4NjExRTZBOTZGODg3QUY2NUQxM0FDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJGQzlEODY5RUY4NjExRTZBOTZGODg3QUY2NUQxM0FDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkZDOUQ4NjZFRjg2MTFFNkE5NkY4ODdBRjY1RDEzQUMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkZDOUQ4NjdFRjg2MTFFNkE5NkY4ODdBRjY1RDEzQUMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7fPjolAAAAn0lEQVR42lSOzQrEIAyEVxt7KuJBb33/h+gTtaV4KMW/Wt1Zsiys4Bgnw5eIZVm01r331/8Zx5HWdb3ve5omKSUnoHByzjKltO/7eZ6whBDQUkqtFVHCH9VxHK01wKHP8zCW+AFk27bruowxRMTwbw/ZGCPIADrnlFIwJS6YaECRAJy3wyyCFULgGbyL9x7FhznP8284H6wzDIO19i3AAD4be2a3YOBNAAAAAElFTkSuQmCC);
+  /*background: url(data:image/png;base64,<?php 
+  echo base64_encode(file_get_contents("../images/punct.png")) ?>) no-repeat left 6px;*/
+  margin-bottom: 21px;
+  padding: 0 0 0 16px;
+}
+
+#block-views-front-blocks-block-3 .views-row {
+  padding-bottom: 25px;
+  overflow: hidden;
+}
+
+
+
+
+#block-views-vibir-redaktora-block-1 .more-link {
+  text-align: left;
+}
+
+#block-views-vibir-redaktora-block-1 .more-link a {
+  text-decoration: none;
+  color: #428bca;
+  font-size: 16px;
+  font-family: 'scada';
+}
+
+.view-vibir-redaktora-.view-display-id-block_1 .views-row {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+}
+
+/*block Top*/
+
+.inline li.statistics_counter {
+  display: none;
+}
+
+#block-views-front-blocks-block-4 * {
+  font-family: 'scada';
+}
+
+#block-views-front-blocks-block-4 .block-title {
+  font-size: 26px;
+  color: #2a2e36;
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-front-blocks-block-4 .views-view-grid tr td {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f4f4f4;
+  padding-left: 15px;
+  padding-right: 15px;
+ /* margin-bottom: 27px;*/
+}
+
+#block-views-front-blocks-block-4 .views-view-grid tr td .views-field-title a {
+  color: #404855;
+  font-size: 15px; 
+  text-decoration: none;
+}
+
+#block-views-front-blocks-block-4 .views-view-grid tr td a:hover {
+  text-decoration: underline;
+}
+
+#block-views-front-blocks-block-4 .views-view-grid tr td .views-field-created {
+  color: #959595;
+  font-size: 13px 
+}
+
+/*front-page фото-репортаж*/
+#block-views-photo-report-block .block-title {
+  font-size: 24px;
+  color: #2a2e36;
+  font-family: 'scada';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-photo-report-block .views-row-odd,
+#block-views-photo-report-block .views-row-even {
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#block-views-photo-report-block .views-row {
+  padding-bottom: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  font-size: 0;
+}
+
+#block-views-photo-report-block .views-field-title {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  width: 47%;
+  height: calc(100% - 45px);
+  background-color: rgba(0,0,0,0.5);
+  padding-left: 4px;
+  padding-top: 5px;
+}
+
+#block-views-photo-report-block .views-field-title a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+#block-views-photo-report-block .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+#block-views-photo-report-block .views-field-created {
+  position: absolute;
+  bottom: 40px;
+  right: 15px;
+  width: 30%;
+  height: 24px;
+  color: #fff;
+  background-color: #a0a8b5;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+
+
+/*форма пошуку*/
+#search-block-form {
+  border: 4px solid #39414d;
+  width: 100%;
+}
+
+#edit-search-block-form--2,
+#edit-search-block-form--3 {
+  border-right: 4px solid #39414d;
+  height: 28px;
+  font-style: italic;
+  font-size: 12px;
+  color: grey;
+  padding-left: 1px;
+  width: 70%;
+}
+
+#search-block-form .form-submit {
+  height: 26px;
+  width: calc(100% - 72%);
+  padding-left: 4px;
+  padding-right: 4px;
+  background: linear-gradient(white, lightgrey);
+  box-shadow: 0 0 3px darkgrey;
+  text-align: center;  
+}
+
+.search-results a {
+  color: #404855;
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-size: 22px;
+}
+
+.search-results a:hover {
+  color: #428bca;
+  text-decoration: underline;
+}
+
+.search-results .search-snippet-info {
+  padding-left: 0px;
+}
+.search-snippet {
+  color: grey;
+}
+
+/*блок реклами*/
+#block-views-reklama-block {
+  width: 88%;
+  margin: 0 auto;
+}
+
+/*archive*/
+#edit-created-wrapper,
+#edit-title-wrapper {
+  width: 100%;
+}
+
+.block-views--exp-archive1-page-instance .block-title {
+  font-size: 26px;
+  color: #2a2e36;
+  font-family: 'PT Sans';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+}
+
+#edit-created-wrapper .views-widget {
+  font-size: 0px;
+}
+
+#edit-created-wrapper .form-item-created-min,
+#edit-created-wrapper .form-item-created-max {
+  display: inline-block;
+  vertical-align: center;
+  width: 50%;
+}
+
+#edit-created-wrapper .form-item-created-min input,
+#edit-created-wrapper .form-item-created-max input,
+#edit-title-wrapper .form-item-title input {
+  width: 100%;
+  font-size: 14px;
+  height: 30px;
+  border: 1px solid grey;
+  color: #555;
+  padding: 6px 12px;
+  placeholder: 'aa';
+}
+
+#edit-submit-archive1 {
+  font-size: 17px;
+  color: #fff;
+  font-family: 'PT Sans';
+  text-transform: uppercase;
+  background: #5a6472;
+  border: none;
+  border-bottom: 2px solid #7f8b9a;
+  padding: 6px 15px 6px 15px;
+}
+
+#edit-submit-archive1:hover {
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+
+.form-item-created-max label {
+  display: none;
+}
+
+
+
+
+/*view rubrika (термінів таксономії)*/
+.view-rubrika .views-row,
+.view-vibir-redaktora- .views-row  {
+  overflow: hidden;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 23px;
+  padding-bottom: 23px;
+}
+
+.view-rubrika .views-row .views-field-title a,
+.region-content .view-vibir-redaktora- .views-row .views-field-title a {
+  font-size: 20px;
+  color: #373c47;
+  text-transform: uppercase;
+  font-family: 'scada', sans-serif; 
+  text-decoration: none;
+}
+
+.view-rubrika .views-row .views-field-title a:hover,
+.region-content .view-vibir-redaktora- .views-row .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+
+.view-rubrika .views-row .views-field-field-field-image-for-teaser,
+.view-vibir-redaktora- .views-row .views-field-field-field-image-for-teaser {
+  float: left;
+  margin-right: 13px;
+}
+
+.view-rubrika .views-row .views-field-created,
+.view-vibir-redaktora- .views-row .views-field-created {
+  font-size: 14px;
+  color: #969696;
+}
+
+
+#footer {
+  font-family: 'PT Sans';
+  color: #fff;
+  margin-top: 30px;
+  padding-top: 42px;
+  padding-bottom: 22px;
+  border-top: none;
+  background: #2d333c;
+}
+
+/*footer-menu*/
+#footer {
+  font-size: 12px;
+}
+
+#footer #block-multiblock-2 li {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+#footer #block-multiblock-2 ul {
+  padding: 0px;
+}
+
+#footer #block-multiblock-2 li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer #block-multiblock-2 li a:hover {
+  text-decoration: underline;
+}
+
+#footer #block-multiblock-2 .caret {
+  display: none;
+}
+
+#footer #block-multiblock-2 .is-expanded {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 13px;
+  text-transform: uppercase;
+ }
+
+#footer #block-multiblock-2 .is-leaf {
+  text-transform: none;
+ }
+
+
+#footer #block-multiblock-2 ul li ul li {
+  padding-right: 20px;
+  line-height: 1.4;
+  max-width: 75px;
+ }
+
+#footer .footer_row1,
+#footer .footer_row2 {
+  width: 70%;
+  margin: 20px auto;
+}
+
+#footer .footer1,
+#footer .footer2 {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 10px;
+  padding-left: 10px;
+ }
+
+#footer .footer1 {
+  width: 33%;
+}
+
+#footer .footer2 {
+  width: 60%;
+}
+
+#footer .view-icons ul {
+  padding-left: 0px;
+}
+
+#footer .view-icons li {
+  display: inline-block;
+  vertical-align: top;
+  list-style-image: none;
+  list-style-type: none;
+  padding-right: 10px;
+}
+
+#footer .nav_menu {
+  padding-left: 0px;
+} 
+
+#footer .nav_menu li {
+  display: inline-block;
+  vertical-align: top;
+  list-style-image: none;
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+#footer .nav_menu li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#footer .web {
+  color: #dbdcde;
+  font-size: 14px;
+  text-align: right;
+}
+
+#footer .web img {
+  vertical-align: middle;
+  width: 40px;
+  border-radius: 50px;
+}
+
+/*Блок user - logOut в header*/
+#block-views-user-logout-block-1 {
+  position: relative;
+  top: 20px;
+}
+
+#block-views-user-logout-block-1 .views-field {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#block-views-user-logout-block-1 .views-field-picture img {
+  border-radius: 50%;
+}
+
+#block-views-user-logout-block-1 .views-field-realname a {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+}
+
+#block-views-user-logout-block-1 .views-field-uid a {
+  display: block;
+  background: #424a56;
+  padding: 7px 12px;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/*Блок user - logOut в на сторінці users/admin*/
+#block-views-user-logout-block .views-field-picture,
+#block-views-user-logout-block .views-field-created,
+#block-views-user-logout-block .views-field-edit-node {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+#block-views-user-logout-block .views-field-edit-node {
+  margin-left: 25%;
+}
+
+#block-views-user-logout-block .views-field-edit-node a {
+  background: #a0a8b5;
+  padding: 7px 12px;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#block-views-user-logout-block .views-field-edit-node a:hover {
+  text-decoration: underline;
+}
+
+#block-views-user-logout-block .views-field-picture img {
+  border-radius: 50%;
+}
+
+#block-views-user-logout-block .views-field-created .realname-pr-block {
+  font-size: 26px;
+  color: #546073;
+  text-transform: uppercase;
+}
+
+#block-views-user-logout-block .views-field-created .created-pr-block,
+#block-views-user-logout-block .views-field-created .tel-pr-block {
+  color: #969696;
+  font-size: 16px;
+}
+
+
+
+/*Сторінка-view users із списком всіх блогов користувача*/
+#content #page-title {
+  border-bottom: 2px solid #a0a8b5;
+}
+
+#content .view-users .views-row {
+  margin-top: 30px;
+}
+
+#content .view-users .views-field-title a {
+  color: #404855;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Scada';
+}
+
+#content .view-users .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+#content .view-users .views-field-created {
+  margin-top: 10px;
+}
+
+#content .view-users .views-field-created span {
+  font-size: 14px;
+  color: #959595;
+}
+
+/*Блок в правому сайтбарі (останні блоги)*/
+#block-views-users-block-1 .block-title {
+  font-size: 24px;
+  color: #2a2e36;
+  font-family: 'Ubuntu Condensed';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-users-block-1 .views-row-first {
+  padding-top: 8px;
+}
+
+#block-views-users-block-1 .views-row {
+  overflow: hidden;
+  border-bottom: 1px solid #f4f4f4;
+  padding: 23px 0 15px 0;
+}
+
+#block-views-users-block-1 .views-field-picture {
+  float: left;
+  margin-right: 12px;
+}
+
+#block-views-users-block-1 .views-field-picture img {
+  border-radius: 50%;
+}
+
+#block-views-users-block-1 .views-field-name a {
+  color: #84888f;
+  font-family: 'Ubuntu Condensed';
+  font-size: 12px;
+  text-decoration: none;
+}
+
+#block-views-users-block-1 .views-field-title a {
+  font-size: 15px;
+  color: #404855;
+  font-family: 'Ubuntu Condensed';
+  text-decoration: none;
+}
+
+#block-views-users-block-1 .views-field-name a:hover,
+#block-views-users-block-1 .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+/*Сторінка Блоги (меню Позиція)*/
+
+.view-blogs .views-row {
+  overflow: hidden;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+ }
+
+.view-blogs .views-field-picture {
+  float: left;
+  margin-right: 12px;
+  min-height: 120px;
+ }
+
+.view-blogs .views-field-picture img {
+  border-radius: 50%;
+ }
+
+.view-blogs .views-field-realname span {
+  line-height: 1.42857143;
+  color: #333;
+  font-size: 14px;
+}
+
+.view-blogs .views-field-realname a {
+  font-size: 14px;
+  color: #84888f;
+  font-family: 'Ubuntu Condensed';
+  text-decoration: none;
+}
+
+.view-blogs .views-field-title a {
+  color: #404855;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'Ubuntu Condensed';
+  text-decoration: none;
+}
+
+.view-blogs .views-field-realname a:hover,
+.view-blogs .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+.view-blogs .views-field-body p {
+  color: #959595;
+  font-size: 16px;
+  font-family: 'Ubuntu Condensed';
+  margin: 0px;
+}
+
+.view-blogs .views-field-created {
+  color: #959595;
+  font-size: 14px;
+  font-family: 'Ubuntu Condensed';
+}
+
+/*Сторінка, що виводить записи у блогах в рохрізі авторів*/
+.view-all-blogs-user .views-row {
+  overflow: hidden;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+}
+
+.view-all-blogs-user .views-field-title a {
+  color: #404855;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'scada';
+  text-decoration: none;
+}
+
+.view-all-blogs-user .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+.view-all-blogs-user .views-field-body {
+  color: #959595;
+  font-size: 16px;
+  font-family: 'scada';
+}
+
+.view-all-blogs-user .views-field-body p {
+  margin: 0px;
+}
+
+.view-all-blogs-user .views-field-created {
+  color: #959595;
+  font-size: 14px;
+  font-family: 'scada';
+}
+
+/*Блок, що виводиться зверху сторінки blogs/user/% (blogs user)*/
+#block-views-blogs-user-block .view-blogs-user {
+  overflow: hidden;
+  border-bottom: 2px solid #ffaa13;
+  padding-bottom: 10px;
+}
+
+#block-views-blogs-user-block .views-field-picture {
+  float: left;
+  margin-right: 10px;
+}
+
+#block-views-blogs-user-block .views-field-picture img {
+  border-radius: 50%;
+}
+
+#block-views-blogs-user-block .views-field-realname {
+  float: left;
+  color: #546073;
+  font-size: 26px;
+  font-family: 'scada';
+  text-transform: uppercase;
+}
+
+#block-views-blogs-user-block .views-field-realname a {
+  text-decoration: none;
+}
+
+#block-views-blogs-user-block .views-field-realname a:hover {
+  text-decoration: underline;
+}
+
+#block-views-blogs-user-block .views-field-type {
+  float: right;
+  padding-left: 30px;
+  background: none no-repeat left center;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDM3ODcyMTNFODE2MTFFM0FCNjlFQzgyRjM3NThCNEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDM3ODcyMTRFODE2MTFFM0FCNjlFQzgyRjM3NThCNEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMzc4NzIxMUU4MTYxMUUzQUI2OUVDODJGMzc1OEI0QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMzc4NzIxMkU4MTYxMUUzQUI2OUVDODJGMzc1OEI0QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvYf0DgAAAMfSURBVHjaYvz//z8DDPz48Uvs958/PAxUAGxsrB/Y2VjfwfgsIOLX7z/8R05cWPz42SsfIJeRGhYxMjL+1VCRn2ZioFHCxMT0C2zRkZMXFwIt8eXj5b6loigzH9kl5IDvP35K3Ln/NOH67Qe5/xn+M5obaecyfPv+Q3zBiq3/Nm4/dOn37z/coKCkBgZaJrpq496ni1dt//H37182ph8/f4mBfAryCQsL81cGKgEOdrbXCnKSK/7++8f+5+8/TiaYBDMz8w8GKgOQZTA2EwOdAE6LgOHM/PXbD1n0VPjz5y8RYBbgRVPLAlWLE7BgEwQl9+17jx398PGLtpAg33lPJ0s7YPx9AaWi0+evTwAm3T825noJinJSy0F5b9veY8c+f/mmLCYieMzN0dyJmYnpJ1E+uv/oWSTIEhD73ftPhg+fvAgEsS9cvt0EdD3Tv3//2C5dvVMDErvz4EkCyBIQ+9Wb91bPnr92JzrouDjYnyHzOTnYX4LFORHiHFjEkNUSFXSy0uKb9bVVmp+9eOsiKy22WUpCZBdI3MZCP/bsxRtdLCwsX0wNNEtAYqDge/fhs/6r1++tFeUkV4oIC5wk2iJQ/BroqNUZ6DDUIQsKC/Kfc3Mwd0Evakz0NUrJTnV0S95UAvCswQTyOojx9dt3WWrb8v7DZz24RTxcnA9BZdyN2w9zXr5+Z08tSx48fh4Kwpyc7M/ZWFk+MYJK2uu3HuSfOn8NlBH/8fPxXAMm0Rd/gBUgOzvbW2dbEx+Y5ivX75Y/ePwilJAlv37/5gfmLRWQeQ5WhiFyMhLrGWE17KOnLwNuAHP+r19/+EH8z1++qrCysn4M8XWUB/EvX79bee7SzTZuLo7HHOzsrwhZBnTkG11NpU4JMeH9sHIKK95z6PSW1Zv2PQSxL127UwGss/5v2X30xM9fv/nJqZ8IpjpQcAF90i4iJHDK1d7MHRjeH6mevIG1r/TZSzc7RIT4T7s6mLmRawlBi0BVhbAQ/xlXB3NXSiwhaBGwyDnr5mBGsSV4E8P5yzebgJWcILUaK4zIDUgsxcd/amVggAADAASvETS2ZJc2AAAAAElFTkSuQmCC);
+
+}
+
+#block-views-blogs-user-block .views-field-type span {
+  font-size: 24px;
+  color: #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-blogs-user-block:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/*avatar*/
+#block-views-avatar-block .views-field-picture img {
+  border-radius: 50%;
+  float: left;
+  margin: 0 10px 5px 0;
+}
+
+/*blog*/
+.node-blog .node-links {
+  display: none;
+}
+
+.node-blog .comment-form label,
+.node-blog .comment-form .username {
+  display: inline-block;
+}
+
+.node-blog .comment-form a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.node-blog .comment-form a:hover{
+  text-decoration: underline;
+}
+
+.node-blog .comment-form .form-item-subject {
+  display: none;
+}
+
+/*page kontakti*/
+.webform-client-form .form-text {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.webform-client-form .form-textarea {
+  display: block;
+  margin: 0;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.webform-client-form .form-submit {
+  font-size: 17px;
+  color: #fff;
+  text-transform: uppercase;
+  background: #5a6472;
+  border: none;
+  border-bottom: 2px solid #7f8b9a;
+  padding: 6px 15px 6px 15px;
+}
+
+.webform-client-form .form-submit:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/*Блок Наш колектив*/
+#block-views-blogs-user-block-1 {
+  margin-top: 30px;
+}
+
+#block-views-blogs-user-block-1 .views-row-odd,
+#block-views-blogs-user-block-1 .views-row-even {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#block-views-blogs-user-block-1 .block-title {
+  font-size: 24px;
+  color: #2a2e36;
+  font-family: 'scada';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+}
+
+#block-views-blogs-user-block-1 .views-row {
+  width: 45%;
+  padding: 0 15px 40px 15px;
+}
+
+#block-views-blogs-user-block-1 .views-field-name {
+  padding: 15px 0 5px 0;
+}
+
+#block-views-blogs-user-block-1 .views-field-name a {
+  color: #546073;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#block-views-blogs-user-block-1 .views-field-name a:hover {
+  text-decoration: underline;
+}
+
+#block-views-blogs-user-block-1 .views-field-field-phone-number {
+  padding-bottom: 5px;
+  font-size: 18px;
+  color: #373c47;
+}
+
+/*my menu user Сторінка users/*  */
+#block-menu-menu-my-menu-user li {
+  display: inline-block;
+  vertical-align: top;
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#block-menu-menu-my-menu-user li a {
+  background: #535e6d;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'scada';
+  margin-right: 8px;
+  padding: 10px 25px;
+  display: block;
+  text-decoration: none;
+}
+
+#block-menu-menu-my-menu-user li a:hover {
+  background: #f38b2b;
+}
+
+/*sitemap*/
+#site-map a {
+  color: #428bca;
+  text-decoration: none;
+  font-family: 'scada';
+  font-size: 16px;
+}
+
+#site-map a:hover {
+  text-decoration: underline;
+}
+
+/*блок authors*/
+#block-views-authors-block .block-title {
+  font-size: 26px;
+  color: #2a2e36;
+  font-family: 'scada';
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  border-bottom: 2px solid #a0a8b5;
+  text-transform: uppercase;
+}
+
+#block-views-authors-block td {
+  width: 22%;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+
+#block-views-authors-block td a {
+  color: #546073;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+#block-views-authors-block td a:hover {
+  text-decoration: underline;
+} 
+
+
+/*форма додавання новини*/
+#article-node-form {
+  font-family: 'scada';
+}
+
+#article-node-form .form-item-title input {
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+}
+
+
+
+
+/*форма додавання блогу*/
+#blog-node-form {
+  font-family: 'scada';
+}
+#blog-node-form #edit-title {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}   
+
+#blog-node-form textarea {
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+#blog-node-form .field-edit-link,
+#blog-node-form .filter-help {
+  display: none;
+}
+
+#blog-node-form .form-submit {
+  margin-top: 10px;
+  font-size: 17px;
+  color: #fff;
+  font-family: 'scada';
+  text-transform: uppercase;
+  background: #5a6472;
+  border: none;
+  border-bottom: 2px solid #7f8b9a;
+  padding: 6px 15px 6px 15px;
+}
+
+#blog-node-form .form-submit:hover {
+  background-color: #2aabd2;
+}
+
+/*форма редагування профілю*/
+#user-profile-form .form-item input {
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+}
+
+#user-profile-form .form-submit {
+  margin-top: 10px;
+  font-size: 17px;
+  color: #fff;
+  font-family: 'scada';
+  text-transform: uppercase;
+  background: #5a6472;
+  border: none;
+  border-bottom: 2px solid #7f8b9a;
+  padding: 6px 15px 6px 15px;
+}
+
+#user-profile-form .form-submit:hover {
+  background-color: #2aabd2;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  .navbar-header-navigation {
+   right: 7%;
+  }
+  .navbar-header {
+    margin-left: 3%;
+  }
+  #navigation ul {
+    margin-left: 1%;
+  }
+  #navigation ul li a  {
+    font-size: 13px;
+  }
+
+  #block-views-user-logout-block-1 {
+    top: 3px;
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  .content-wrapper {
+    width: 96%;
+    margin: 0px auto;
+    margin-top: 90px;
+  }
+
+  .navbar-header .navbar-toggle {
+    /*margin-left: 52%;*/
+    display: block;
+    float: right;
+    margin-right: 5%;
+  }
+
+  .logo img {
+    margin-top: 0;
+    max-width: 68px;
+    max-height: 68px;
+  }
+
+  .hidden_show {
+    display: block !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  }
+
+  .hidden_show1 {
+    display: block !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    border-top: 1px solid #101010;
+  }
+
+  .active_button {
+    background-color: #333;
+  }
+
+  .navbar-header-navigation {
+    position: relative;
+  }
+
+  .header__region {
+    position: relative;
+    right: 10px;
+    top: 4px;
+
+    /*margin-left: 42%;*/
+  }
+
+  .header__region #block-menu-menu-login-menu {
+    float: right;
+    margin-right: 0.5%;
+  }
+
+  .header__region #block-ulogin-ulogin {
+    float: right;
+    margin-right: 5%;
+  }
+
+  .nav_menu {
+    display: none; 
+    transition: 4s display !important;   
+  }
+
+  .block-menu .nav_menu .menu__item.is-leaf a {
+    padding: 4px;
+  }
+
+  #navigation .collapse_main_menu {
+    display: block;
+    width: 100%;
+    background-color: #39414d;
+    padding-top: 10px;
+  }
+  #navigation .collapse_main_menu .main_menu{
+    display: none;
+    background-color: #39414d;
+    width: 100%;
+    margin-left: 0px;
+  }
+  
+  #navigation .collapse_main_menu .main_menu a {
+    border-bottom: 1px solid #485467;
+    font-size: 15px;
+    height: 15px;
+    padding-top: 3px;
+    padding-left: 5px;
+  }
+
+  #navigation .collapse_main_menu ul li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    /*display: none;*/
+    float: left;
+    min-width: 160px;
+    width: auto !important;
+    list-style: none;
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  }
+
+  #navigation .collapse_main_menu ul li ul li {
+    display: none;
+  }
+
+  #navigation .collapse_main_menu .main_menu li .main_menu li a {
+    font-weight: normal;
+    padding-left: 10px;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  #navigation .collapse_main_menu ul li:hover ul li {
+    display: block;
+  }
+
+  #block-system-main-menu .navbar-toggle1 {
+    display: block;
+    margin-bottom: 0px;
+  }
+
+  #navigation ul li a{
+    border-right: 0;
+  }
+
+
+   button:focus {
+    outline: 0px;
+  }
+
+  .block-menu .nav_menu .menu__item.is-leaf {
+    display: block;
+  }
+
+  .block-menu .nav_menu .menu__item.is-leaf a {
+    text-align: center;
+  }
+
+  #block-system-main-menu .main_menu .menu__item.is-expanded {
+    display: block;
+  }
+
+}
+
+@media only screen and (max-width: 350px) {
+  .header__region {
+    margin-right: 15%;
+  }
+  .navbar-header {
+    margin-right: 15%;
+  }
+}
+
+@media only screen 
+and (min-width: 690px)
+and (max-width: 768px) {
+  .content-wrapper {
+    width: 640px;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+
+  .after_content {
+    width: 415px;
+    margin-left: calc((100% - 640px) / 2);
+  }
+
+  .navbar-toggle,
+  .navbar-toggle1 {
+    display: none;
+  }
+}
+
+@media only screen 
+and (min-width: 768px)
+and (max-width: 992px){
+  .content-wrapper {
+    width: 750px;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+
+  .after_content {
+    width: 487px;
+    margin-left: calc((100% - 750px) / 2);
+  }
+}
+
+@media only screen 
+and (min-width: 992px)
+and (max-width: 1200px) {
+  .content-wrapper {
+    width: 970px;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+
+  .after_content {
+    width: 650px;
+    margin-left: calc((100% - 970px) / 2);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .content-wrapper {
+    /*width: 1100px;*/
+    width: 1000px;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+
+  .after_content {
+    width: 650px;
+    margin-left: calc((100% - 1000px) / 2);
+  }
+}
